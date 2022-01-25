@@ -1,0 +1,69 @@
+let index = {
+	init: function(){
+		$("#btn-save").on("click", ()=>{
+			this.save();
+		});
+		$("#btn-login").on("click", ()=>{
+			this.login();
+		});
+		
+	},
+	
+	login: function(){
+		let data = {
+			username: $("#username").val(),
+			password: $("#password").val(),
+		};
+		//console.log(data);
+		//default가 비동기호출.
+		//JSON.stringify(data) ==> // JSON 문자열이됨.
+		
+		//ajax가 통신성공하고 ,json을 리턴해주면 자바 오브젝트로 변환
+		$.ajax({
+			//회원가입수행요청
+			type: "POST",
+			url: "/api/user/login",
+			data:JSON.stringify(data), 
+			contentType: "application/json; charset=utf-8", //body데이터가 어떤타입인지
+			dataType:"json" //요청을 서버로해서 응답이왔을때 문자열이 생긴게 json이면
+										// javascript오브젝트로 반환
+		}).done(function(resp){ // /blog/api/user 에 mapping되는 메서드의 반환값을 받는다.
+			alert("로그인이 완료되었습니다.");
+			location.href="/";
+	
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		}); //ajax통신을통해 3개의데이터를 json으로변경하여 insert요청,
+	},
+	
+	save: function(){
+		let data = {
+			username: $("#username").val(),
+			password: $("#password").val(),
+			email: $("#email").val()
+		};
+		//console.log(data);
+		//default가 비동기호출.
+		//JSON.stringify(data) ==> // JSON 문자열이됨.
+		
+		//ajax가 통신성공하고 ,json을 리턴해주면 자바 오브젝트로 변환
+		$.ajax({
+			//회원가입수행요청
+			type: "POST",
+			url: "/api/user",
+			data:JSON.stringify(data), 
+			contentType: "application/json; charset=utf-8", //body데이터가 어떤타입인지
+			dataType:"json" //요청을 서버로해서 응답이왔을때 문자열이 생긴게 json이면
+										// javascript오브젝트로 반환
+		}).done(function(resp){ // /blog/api/user 에 mapping되는 메서드의 반환값을 받는다.
+			alert("회원가입이 완료되었습니다.");
+			location.href="/";
+	
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		}); //ajax통신을통해 3개의데이터를 json으로변경하여 insert요청,
+	}
+
+
+}
+index.init();

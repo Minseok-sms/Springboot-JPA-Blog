@@ -1,0 +1,15 @@
+package com.cos.blog.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+//롬북
+@Data  //getter setter
+@NoArgsConstructor // default 생성자 
+@AllArgsConstructor // 생성자
+@Builder
+public class ResponseDto<T> {
+	HttpStatus status;
+	T data;
+}
