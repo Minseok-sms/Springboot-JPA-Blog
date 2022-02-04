@@ -1,0 +1,42 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+    
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+      
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul
+    username: cos
+    password: cos1234
+    
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      #ddl-auto : create해놓으면 프로젝트 실행할때마다 테이블이 생성이된다.
+      
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        #전략설정 : 엔티티 클래스의 변수이름을 그대로 테이블에 생성해줌.
+        
+      use-new-id-generator-mappings: false
+      
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+      
+      
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false

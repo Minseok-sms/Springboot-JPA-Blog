@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+		Sum calculator
+		Number 1: <input name="number1"/><br>
+		Number 2: <input name="number2"/>
+		<button type="submit">Calculate</button>
+		<button type="reset">Reset</button>
+</body>
+</html>

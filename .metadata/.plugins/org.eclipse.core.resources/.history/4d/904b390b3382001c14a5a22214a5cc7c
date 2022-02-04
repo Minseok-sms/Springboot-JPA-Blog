@@ -1,0 +1,26 @@
+package com.cos.blog.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class TestController {
+
+	@GetMapping("/test/result")
+	public String testResult(@RequestParam("param1") int param1, 
+			@RequestParam("param2") int param2, 
+			Model model) {
+		int sum_value = param1 + param2;
+		model.addAttribute("sum" , sum_value);
+		return "test/result.jsp";
+		
+	}
+	
+	@GetMapping("/test")
+	public String testJsp() {
+	
+		return "test/form1";
+	}
+}
